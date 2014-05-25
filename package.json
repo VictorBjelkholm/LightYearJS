@@ -2,7 +2,10 @@
   "name": "LightYear",
   "version": "0.0.1",
   "description": "Tiny Mediator pattern implementation",
-  "main": "builds/lightyear.js",
+  "main": [
+    "builds/LightYear.js",
+    "builds/LightYear.min.js"
+  ],
   "scripts": {
     "test": "make testw"
   },

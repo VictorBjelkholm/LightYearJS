@@ -9,7 +9,7 @@ gulp.task('default', function() {
 
 gulp.task('scripts', function() {
   return gulp.src('src/*.js')
-    .pipe(concat('LightYearJS.js'))
+    .pipe(concat('LightYear.js'))
     .pipe(gulp.dest('build/'));
 });
 
@@ -17,7 +17,7 @@ gulp.task('scripts', function() {
 gulp.task('scripts-min', function() {
   return gulp.src('src/*.js')
     .pipe(uglify())
-    .pipe(concat('LightYearJS.min.js'))
+    .pipe(concat('LightYear.min.js'))
     .pipe(gulp.dest('build/'));
 });
 
