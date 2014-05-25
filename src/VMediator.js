@@ -15,11 +15,11 @@ VMediator = (function() {
   VMediator.subscribe = function(channelName, callback) {
     if (!VMediator.channels[channelName]) {
       VMediator.channels[channelName] = [];
-      VMediator.channels[channelName].push({
-        context: VMediator,
-        callback: callback
-      });
     }
+    VMediator.channels[channelName].push({
+      context: VMediator,
+      callback: callback
+    });
   };
 
   VMediator.publish = function(channelName) {

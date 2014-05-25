@@ -4,6 +4,7 @@ VMediator = require('../../src/VMediator').VMediator;
 describe('VMediator Tests', function() {
   var self = this;
   before(function() {
+    self.mediator = null;
     self.mediator = VMediator;
   });
 
@@ -34,6 +35,19 @@ describe('VMediator Tests', function() {
     sut.publish('random:change', 'newname!');
 
     assert.equal('newname!', sut.name);
+  })
+
+  it('let two instances subscribe to the same channel', function(done) {
+    var hello = 'hola mundo';
+    self.mediator.subscribe('namespace2:action', function() {
+      //First subscriber
+    });
+    self.mediator.subscribe('namespace2:action', function(eventData) {
+      assert.equal(hello, eventData);
+      done();
+    });
+
+    self.mediator.publish('namespace2:action', hello);
   })
 
   it('should throw error if channel doesn\'t exists', function() {
