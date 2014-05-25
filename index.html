@@ -3,16 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>LightYearJS - Demo</title>
-	<script src="build/LightYearJS.js"></script>
+	<script src="build/LightYear.js"></script>
 </head>
 <body>
 	<button action="click:button:click">Click me!</button>
-	<button action="mouseover:button:hover,mouseout:button:stopHover">Hover me! (and look in the console)</button>
+	<button action="mouseover:button:hover,mouseout:button:stopHover,click:button:clicked">Hover me! (and look in the console)</button>
+	<div id="SomeView"></div>
 	<script>
 	var actionRoot = new VActionRoot(document);	
 
 	VMediator.subscribe("button:click", function() {
-		alert('You clicked on the button!');
+		console.log('You clicked on the button!');
 	});
 
 	VMediator.subscribe("button:hover", function() {
@@ -21,6 +22,18 @@
 
 	VMediator.subscribe("button:stopHover", function() {
 		console.log('You are not hovering the button anymore...');
+	});
+
+	VMediator.subscribe("button:clicked", function() {
+		console.log('You are brave enough to click me!');
+	});
+
+	var SomeView = document.querySelector('#SomeView');
+
+	VMediator.install(SomeView);
+
+	SomeView.subscribe("button:click", function() {
+		SomeView.innerHTML += "<br>You clicked the button!"
 	});
 	</script>
 </body>
