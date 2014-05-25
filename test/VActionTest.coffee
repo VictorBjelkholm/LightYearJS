@@ -1,5 +1,5 @@
 assert = require 'assert'
-VAction = require('../src/Action').VAction;
+VAction = require('../src/VAction').VAction;
 
 describe 'Action tests', () ->
   it 'parse the action string to type, namespace, action', () ->
