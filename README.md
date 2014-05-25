@@ -1,4 +1,4 @@
-LightYear
+LightYearJS
 =========
 
 Tiny event dispatcher

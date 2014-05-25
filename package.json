@@ -4,7 +4,7 @@
   "description": "Tiny Mediator pattern implementation",
   "main": "builds/lightyear.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha -w --compilers coffee:coffee-script/register -G"
+    "test": "./node_modules/.bin/mocha -w --compilers coffee:coffee-script/register -G --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/VictorBjelkholm/LightYear",
   "devDependencies": {
     "mocha": "^1.19.0",
-    "coffee-script": "^1.7.1"
+    "coffee-script": "^1.7.1",
+    "jsdom": "^0.10.5"
   }
 }
