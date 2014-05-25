@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LightYearJS - Demo</title>
+	<script src="build/LightYearJS.js"></script>
+</head>
+<body>
+	<button action="click:button:click">Click me!</button>
+	<button action="mouseover:button:hover,mouseout:button:stopHover">Hover me! (and look in the console)</button>
+	<script>
+	var actionRoot = new VActionRoot(document);	
+
+	VMediator.subscribe("button:click", function() {
+		alert('You clicked on the button!');
+	});
+
+	VMediator.subscribe("button:hover", function() {
+		console.log('You are hovering the button!');
+	});
+
+	VMediator.subscribe("button:stopHover", function() {
+		console.log('You are not hovering the button anymore...');
+	});
+	</script>
+</body>
+</html>
