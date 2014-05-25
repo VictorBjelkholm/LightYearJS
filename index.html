@@ -3,14 +3,18 @@
 <head>
 	<meta charset="UTF-8">
 	<title>LightYearJS - Demo</title>
+	<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+	<script src="http://underscorejs.org/underscore.js"></script>
+	<script src="http://backbonejs.org/backbone.js"></script>
 	<script src="build/LightYear.js"></script>
 </head>
 <body>
 	<button action="click:button:click">Click me!</button>
 	<button action="mouseover:button:hover,mouseout:button:stopHover,click:button:clicked">Hover me! (and look in the console)</button>
 	<div id="SomeView"></div>
+  <hr />
 	<script>
-	var actionRoot = new VActionRoot(document);	
+	var actionRoot = new VActionRoot(document);
 
 	VMediator.subscribe("button:click", function() {
 		console.log('You clicked on the button!');
@@ -35,6 +39,43 @@
 	SomeView.subscribe("button:click", function() {
 		SomeView.innerHTML += "<br>You clicked the button!"
 	});
+
+  Button = Backbone.View.extend({
+    tagName: 'button',
+    className: 'btn',
+    template: _.template('<button class="btn" action="click:button:click">Say hello</button>'),
+    render: function() {
+      this.$el = $(document.body).append(this.template());
+    },
+    constructor: function() {
+      VMediator.install(this);
+      console.log('constructor for button called!');
+    }
+  });
+
+  Model = Backbone.Model.extend({
+    attr: {
+      name: "Lars"
+    },
+    constructor: function() {
+      var self = this;
+      console.log('constructor for model called!');
+      VMediator.subscribe('button:click', function(){
+        self.attr.name = "Something else now!";
+        console.log('Model name is: ' + self.attr.name);
+      });
+    }
+  })
+
+
+  // Issue when added dom elements dynamically... Listen for document dom changes? Performance...
+
+  var btn = new Button();
+  btn.render();
+
+  var model = new Model();
+
+  console.log('Model name is: ' + model.attr.name);
 	</script>
 </body>
 </html>
