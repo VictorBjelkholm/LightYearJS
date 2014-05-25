@@ -1,5 +1,5 @@
 class VMediator
-  @channels = {}
+  @channels: {}
 
   @InstallTo: (obj) ->
     obj.Subscribe = @Subscribe;
