@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 
-var coffee = require('gulp-coffee');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
@@ -9,16 +8,14 @@ gulp.task('default', function() {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('src/*.coffee')
-    .pipe(coffee())
+  return gulp.src('src/*.js')
     .pipe(concat('LightYearJS.js'))
     .pipe(gulp.dest('build/'));
 });
 
 
 gulp.task('scripts-min', function() {
-  return gulp.src('src/*.coffee')
-    .pipe(coffee())
+  return gulp.src('src/*.js')
     .pipe(uglify())
     .pipe(concat('LightYearJS.min.js'))
     .pipe(gulp.dest('build/'));
