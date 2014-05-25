@@ -8,6 +8,7 @@ VAction = (function() {
   VAction.prototype.el = null;
 
   function VAction(el, fullName) {
+    var self = this;
     this.el = el;
     this.fullName = fullName;
 
@@ -18,8 +19,13 @@ VAction = (function() {
     this.type = argArr[0];
     this.namespace = argArr[1];
     this.action = argArr[2];
-    //$(@el).on @type, (ev) =>
-     //Mediator.Publish(@namespace + ':' + @action, ev);
+    if(this.el !== null) {
+      this.el.addEventListener(this.type, function(ev){
+        VMediator.publish(self.namespace + ':' + self.action, ev);
+      }, false);
+    }
+    // $(@el).on @type, (ev) =>
+    //  Mediator.Publish(@namespace + ':' + @action, ev);
   }
   return VAction;
 })()

@@ -26,7 +26,6 @@ VMediator = (function() {
     if(!VMediator.channels[channelName]) {
       throw new Error('No channel like that');
     }
-    console.log('channelname!')
     channel = VMediator.channels[channelName];
     args = Array.prototype.slice.call(arguments, 1);
     for (var i = 0, l = VMediator.channels[channelName].length; i < l; i ++) {

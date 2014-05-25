@@ -1,18 +1,3 @@
-//class VActionRoot
-//  @actionsEls: []
-//  @actions: []
-//  @document
-//
-//  constructor: (@document) ->
-//    @actions = []
-//    @actionsEls = @document.querySelectorAll('[action]')
-//    for action in @actionsEls
-//      actionAttr = action.getAttribute('action')
-//      actionInstance = new VAction(action, actionAttr)
-//      @actions.push(actionInstance)
-//
-//root = exports ? window
-//root.VActionRoot = VActionRoot
 var VActionRoot;
 
 VActionRoot = (function() {
@@ -25,14 +10,24 @@ VActionRoot = (function() {
   function VActionRoot(document) {
     var action, actionAttr, actionInstance, _i, _len, _ref;
     this.document = document;
+    var self = this;
     this.actions = [];
     this.actionsEls = this.document.querySelectorAll('[action]');
     _ref = this.actionsEls;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       action = _ref[_i];
       actionAttr = action.getAttribute('action');
-      actionInstance = new VAction(action, actionAttr);
-      this.actions.push(actionInstance);
+      if(actionAttr.indexOf(',') !== -1) {
+        manyActions = actionAttr.split(',');
+        for (var i = 0; i < manyActions.length; i++) {
+          actionAttr = manyActions[i];
+          var actionInstance = new VAction(action, actionAttr);
+          self.actions.push(actionInstance);
+        };
+      } else {
+        actionInstance = new VAction(action, actionAttr);
+        this.actions.push(actionInstance);
+      }
     }
   }
 

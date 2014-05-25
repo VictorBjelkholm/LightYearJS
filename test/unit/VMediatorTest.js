@@ -1,8 +1,6 @@
 assert = require('assert');
 VMediator = require('../../src/VMediator').VMediator;
 
-console.log(VMediator);
-
 describe('VMediator Tests', function() {
   var self = this;
   before(function() {
