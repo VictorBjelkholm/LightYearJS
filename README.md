@@ -1,4 +1,4 @@
 LightYear
 =========
 
-Tiny implementation of Mediator pattern
+Tiny event dispatcher
