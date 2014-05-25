@@ -1,0 +1,28 @@
+{
+  "name": "LightYear",
+  "version": "0.0.1",
+  "description": "Tiny Mediator pattern implementation",
+  "main": "builds/lightyear.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -w --compilers coffee:coffee-script/register -G"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/VictorBjelkholm/LightYear.git"
+  },
+  "keywords": [
+    "mediator",
+    "event",
+    "dispatcher"
+  ],
+  "author": "Victor Bjelkholm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VictorBjelkholm/LightYear/issues"
+  },
+  "homepage": "https://github.com/VictorBjelkholm/LightYear",
+  "devDependencies": {
+    "mocha": "^1.19.0",
+    "coffee-script": "^1.7.1"
+  }
+}
