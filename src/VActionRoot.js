@@ -12,13 +12,13 @@ VActionRoot = (function() {
     this.document = document;
     var self = this;
     this.actions = [];
-    this.actionsEls = this.document.querySelectorAll('[action]');
+    this.actionsEls = this.document.querySelectorAll('[data-action]');
     _ref = this.actionsEls;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       action = _ref[_i];
-      actionAttr = action.getAttribute('action');
+      actionAttr = action.getAttribute('data-action');
       if(actionAttr.indexOf(',') !== -1) {
-        manyActions = actionAttr.split(',');
+        var manyActions = actionAttr.split(',');
         for (var i = 0; i < manyActions.length; i++) {
           actionAttr = manyActions[i];
           var actionInstance = new VAction(action, actionAttr);

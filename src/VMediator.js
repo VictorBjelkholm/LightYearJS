@@ -26,8 +26,8 @@ VMediator = (function() {
     if(!VMediator.channels[channelName]) {
       throw new Error('No channel like that');
     }
-    channel = VMediator.channels[channelName];
-    args = Array.prototype.slice.call(arguments, 1);
+    var channel = VMediator.channels[channelName];
+    var args = Array.prototype.slice.call(arguments, 1);
     for (var i = 0, l = VMediator.channels[channelName].length; i < l; i ++) {
       var subscription = VMediator.channels[channelName][i];
       subscription.callback.apply(subscription.context, args);
