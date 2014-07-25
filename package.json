@@ -7,7 +7,7 @@
     "builds/LightYear.min.js"
   ],
   "scripts": {
-    "test": "make testw"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,9 @@
     "jsdom": "^0.10.5",
     "gulp": "^3.6.2",
     "gulp-concat": "^2.2.0",
-    "gulp-uglify": "^0.3.0"
+    "gulp-uglify": "^0.3.0",
+    "phantomjs": "^1.9.7-8",
+    "mocha-phantomjs": "^3.4.1",
+    "chai": "^1.9.1"
   }
 }

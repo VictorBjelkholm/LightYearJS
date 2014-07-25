@@ -50,11 +50,12 @@ describe('VMediator Tests', function() {
     self.mediator.publish('namespace2:action', hello);
   })
 
-  it('should throw error if channel doesn\'t exists', function() {
+  it('should throw error if channel doesn\'t exists', function(done) {
     try {
       self.mediator.publish('helvete:klicka');
     } catch (error) {
       assert.equal('No channel like that', error.message);
+      done();
     }
   });
 

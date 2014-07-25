@@ -29,8 +29,6 @@ VAction = (function() {
         VMediator.publish(self.namespace + ':' + self.action, ev);
       }, false);
     }
-    // $(@el).on @type, (ev) =>
-    //  Mediator.Publish(@namespace + ':' + @action, ev);
   }
   return VAction;
 })()
