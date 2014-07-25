@@ -12,11 +12,11 @@ VActionRoot = (function() {
     this.document = document;
     var self = this;
     this.actions = [];
-    this.actionsEls = this.document.querySelectorAll('[data-action]');
+    this.actionsEls = this.document.querySelectorAll('[action]');
     _ref = this.actionsEls;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       action = _ref[_i];
-      actionAttr = action.getAttribute('data-action');
+      actionAttr = action.getAttribute('action');
       if(actionAttr.indexOf(',') !== -1) {
         var manyActions = actionAttr.split(',');
         for (var i = 0; i < manyActions.length; i++) {

@@ -2,80 +2,127 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>LightYearJS - Demo</title>
-	<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
-	<script src="http://underscorejs.org/underscore.js"></script>
-	<script src="http://backbonejs.org/backbone.js"></script>
+  <title>LightYearJS - Demo</title>
+  <script src="node_modules/mocha/mocha.js"></script>
+  <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
+  <!-- Depdenencies for tests -->
+  <script src="node_modules/mocha/mocha.js"></script>
+  <script src="node_modules/chai/chai.js"></script>
+  <!-- Dependencies for acceptance tests -->
+	<script src="test/libs/jquery-2.1.1.js"></script>
+	<script src="test/libs/underscore.js"></script>
+	<script src="test/libs/backbone.js"></script>
+  <!-- Source -->
 	<script src="build/LightYear.js"></script>
+  <!-- Tests-->
+  <script>mocha.setup('bdd')</script>
+  <script src="test/acceptance/hello.js"></script>
 </head>
 <body>
-	<button action="click:button:click">Click me!</button>
+  <div id="mocha"></div>
+  <div id="mocha-error"></div>
+  <div id="messages"></div>
+  <div id="fixtures"></div>
+	<button class="rootTest" action="click:button:click" value="Button Master!">Click me!</button>
 	<button action="mouseover:button:hover,mouseout:button:stopHover,click:button:clicked">Hover me! (and look in the console)</button>
 	<div id="SomeView"></div>
   <hr />
+  <script type="text/javascript" charset="utf-8">
+mocha.ui('bdd');
+mocha.reporter('html');
+    if (window.mochaPhantomJS) {
+      mochaPhantomJS.run({ignoreLeaks: true});
+    } else {
+      mocha.run();
+    }
+  </script>
 	<script>
-	var actionRoot = new VActionRoot(document);
+/*
+var target = document.body;
 
-	VMediator.subscribe("button:click", function() {
-		console.log('You clicked on the button!');
-	});
-
-	VMediator.subscribe("button:hover", function() {
-		console.log('You are hovering the button!');
-	});
-
-	VMediator.subscribe("button:stopHover", function() {
-		console.log('You are not hovering the button anymore...');
-	});
-
-	VMediator.subscribe("button:clicked", function() {
-		console.log('You are brave enough to click me!');
-	});
-
-	var SomeView = document.querySelector('#SomeView');
-
-	VMediator.install(SomeView);
-
-	SomeView.subscribe("button:click", function() {
-		SomeView.innerHTML += "<br>You clicked the button!"
-	});
-
-  Button = Backbone.View.extend({
-    tagName: 'button',
-    className: 'btn',
-    template: _.template('<button class="btn" action="click:button:click">Say hello</button>'),
-    render: function() {
-      this.$el = $(document.body).append(this.template());
-    },
-    constructor: function() {
-      VMediator.install(this);
-      console.log('constructor for button called!');
-    }
-  });
-
-  Model = Backbone.Model.extend({
-    attr: {
-      name: "Lars"
-    },
-    constructor: function() {
-      var self = this;
-      console.log('constructor for model called!');
-      VMediator.subscribe('button:click', function(){
-        self.attr.name = "Something else now!";
-        console.log('Model name is: ' + self.attr.name);
+var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      console.log(mutation.type);
       });
-    }
-  })
+    });
+
+// configuration of the observer:
+var config = {
+  attributes: true,
+  childList: true,
+  characterData: true
+};
+
+// pass in the target node, as well as the observer options
+observer.observe(target, config);
+
+*/
+
+//
+//	var actionRoot = new VActionRoot(document);
+//
+//	VMediator.subscribe("button:click", function() {
+//		console.log('You clicked on the button!');
+//	});
+//
+//	VMediator.subscribe("button:hover", function() {
+//		console.log('You are hovering the button!');
+//	});
+//
+//	VMediator.subscribe("button:stopHover", function() {
+//		console.log('You are not hovering the button anymore...');
+//	});
+//
+//	VMediator.subscribe("button:clicked", function() {
+//		console.log('You are brave enough to click me!');
+//	});
+//
+//	var SomeView = document.querySelector('#SomeView');
+//
+//	VMediator.install(SomeView);
+//
+//	SomeView.subscribe("button:click", function() {
+//		SomeView.innerHTML += "<br>You clicked the button!"
+//	});
+//
+//  Button = Backbone.View.extend({
+//    tagName: 'button',
+//    className: 'btn',
+//    template: _.template('<button class="btn" action="click:button:click">Say hello</button>'),
+//    render: function() {
+//      this.$el = $(document.body).append(this.template());
+//    },
+//    constructor: function() {
+//      VMediator.install(this);
+//      console.log('constructor for button called!');
+//    }
+//  });
+//
+//  Model = Backbone.Model.extend({
+//    attr: {
+//      name: "Lars"
+//    },
+//    constructor: function() {
+//      var self = this;
+//      console.log('constructor for model called!');
+//      VMediator.subscribe('button:click', function(){
+//        self.attr.name = "Something else now!";
+//        console.log('Model name is: ' + self.attr.name);
+//      });
+//    }
+//  })
+//
+//
+//  // Issue when added dom elements dynamically... Listen for document dom changes? Performance...
+//
+//  var btn = new Button();
+//  btn.render();
+//
+//  var model = new Model();
+//
+//  console.log('Model name is: ' + model.attr.name);
 
 
-  // Issue when added dom elements dynamically... Listen for document dom changes? Performance...
-
-  var btn = new Button();
-  btn.render();
-
-  var model = new Model();
-
-  console.log('Model name is: ' + model.attr.name);
-	</script>
+  </script>
 </body>
 </html>

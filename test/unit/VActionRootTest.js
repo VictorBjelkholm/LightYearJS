@@ -2,8 +2,8 @@ assert = require('assert');
 jsdom = require('jsdom');
 var VActionRoot = require('../../src/VActionRoot').VActionRoot;
 
-html = "<input type='input' data-action='click:textboxes:click'></input>" +
-       "<button data-action='click:namespaceOne:click,click:namespaceTwo:click'>Click Me</button>'";
+html = "<input type='input' action='click:textboxes:click'></input>" +
+       "<button action='click:namespaceOne:click,click:namespaceTwo:click'>Click Me</button>'";
 
 describe('VAction Root Tests', function() {
   document = null;
