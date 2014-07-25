@@ -19,13 +19,16 @@ VAction = (function() {
     this.type = argArr[0];
     this.namespace = argArr[1];
     this.action = argArr[2];
+    var actionArgumentMatch = this.action.match(/\((.*)\)/i);
+    if(actionArgumentMatch !== null) {
+      this.action = this.action.substr(0, actionArgumentMatch.index);
+      this.argument = actionArgumentMatch[1];
+    }
     if(this.el !== null) {
       this.el.addEventListener(this.type, function(ev){
         VMediator.publish(self.namespace + ':' + self.action, ev);
       }, false);
     }
-    // $(@el).on @type, (ev) =>
-    //  Mediator.Publish(@namespace + ':' + @action, ev);
   }
   return VAction;
 })()
@@ -53,7 +56,7 @@ VActionRoot = (function() {
       action = _ref[_i];
       actionAttr = action.getAttribute('action');
       if(actionAttr.indexOf(',') !== -1) {
-        manyActions = actionAttr.split(',');
+        var manyActions = actionAttr.split(',');
         for (var i = 0; i < manyActions.length; i++) {
           actionAttr = manyActions[i];
           var actionInstance = new VAction(action, actionAttr);
@@ -103,8 +106,8 @@ VMediator = (function() {
     if(!VMediator.channels[channelName]) {
       throw new Error('No channel like that');
     }
-    channel = VMediator.channels[channelName];
-    args = Array.prototype.slice.call(arguments, 1);
+    var channel = VMediator.channels[channelName];
+    var args = Array.prototype.slice.call(arguments, 1);
     for (var i = 0, l = VMediator.channels[channelName].length; i < l; i ++) {
       var subscription = VMediator.channels[channelName][i];
       subscription.callback.apply(subscription.context, args);
