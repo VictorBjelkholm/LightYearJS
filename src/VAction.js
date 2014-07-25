@@ -19,6 +19,11 @@ VAction = (function() {
     this.type = argArr[0];
     this.namespace = argArr[1];
     this.action = argArr[2];
+    var actionArgumentMatch = this.action.match(/\((.*)\)/i);
+    if(actionArgumentMatch !== null) {
+      this.action = this.action.substr(0, actionArgumentMatch.index);
+      this.argument = actionArgumentMatch[1];
+    }
     if(this.el !== null) {
       this.el.addEventListener(this.type, function(ev){
         VMediator.publish(self.namespace + ':' + self.action, ev);
