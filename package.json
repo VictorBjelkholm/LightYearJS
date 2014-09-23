@@ -1,5 +1,5 @@
 {
-  "name": "LightYear",
+  "name": "lightyear",
   "version": "0.0.1",
   "description": "Tiny Mediator pattern implementation",
   "main": [
