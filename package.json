@@ -1,6 +1,6 @@
 {
   "name": "lightyear",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Tiny Mediator pattern implementation",
   "main": "builds/LightYear.js",
   "scripts": {
