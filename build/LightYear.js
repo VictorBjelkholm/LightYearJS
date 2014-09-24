@@ -119,3 +119,4 @@ VMediator = (function() {
 
 root = typeof exports !== "undefined" && exports !== null ? exports : window;
 root.VMediator = VMediator;
+module.exports = root

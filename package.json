@@ -2,10 +2,7 @@
   "name": "lightyear",
   "version": "0.0.1",
   "description": "Tiny Mediator pattern implementation",
-  "main": [
-    "builds/LightYear.js",
-    "builds/LightYear.min.js"
-  ],
+  "main": "builds/LightYear.js",
   "scripts": {
     "test": "make test"
   },
@@ -31,6 +28,7 @@
     "gulp": "^3.6.2",
     "gulp-concat": "^2.2.0",
     "gulp-uglify": "^0.3.0",
+    "gulp-insert": "^0.4.0",
     "phantomjs": "^1.9.7-8",
     "mocha-phantomjs": "^3.4.1",
     "chai": "^1.9.1"
